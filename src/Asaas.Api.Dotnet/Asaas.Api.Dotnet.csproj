@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
+    <RootNamespace>Asaas.Api.Dotnet</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <PackageId>Alpha.Asaas.Api.Dotnet</PackageId>
+    <Version>1.0.5</Version>
+    <Authors>marteFilho</Authors>
+    <Company>marteFilho</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1"></PackageReference>
+  </ItemGroup>
+
+</Project>
