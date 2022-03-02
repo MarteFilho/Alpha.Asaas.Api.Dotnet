@@ -1,39 +1,40 @@
+using Asaas.Api.Dotnet.Attributes;
 using Asaas.Api.Dotnet.Models.Requests;
 using Newtonsoft.Json;
 
 namespace Asaas.Api.Dotnet.Models.Payment
 {
-    public class CreditCardHolderInfo : RequestParams
+    public record CreditCardHolderInfo : RequestParams
     {
-        [BodyParam("name")]
+        [BodyParameter("name")]
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [BodyParam("email")]
+        [BodyParameter("email")]
         [JsonProperty("email")]
         public string Email { get; set; }
 
-        [BodyParam("cpfCnpj")]
+        [BodyParameter("cpfCnpj")]
         [JsonProperty("cpfCnpj")]
         public string CpfCnpj { get; set; }
 
-        [BodyParam("postalCode")]
+        [BodyParameter("postalCode")]
         [JsonProperty("postalCode")]
         public string PostalCode { get; set; }
 
-        [BodyParam("addressNumber")]
+        [BodyParameter("addressNumber")]
         [JsonProperty("addressNumber")]
         public string AddressNumber { get; set; }
 
-        [BodyParam("addressComplement")]
+        [BodyParameter("addressComplement")]
         [JsonProperty("addressComplement")]
         public string? AddressComplement { get; set; }
 
-        [BodyParam("phone")]
+        [BodyParameter("phone")]
         [JsonProperty("phone")]
         public string Phone { get; set; }
 
-        [BodyParam("mobilePhone")]
+        [BodyParameter("mobilePhone")]
         [JsonProperty("mobilePhone")]
         public string MobilePhone { get; set; }
     }

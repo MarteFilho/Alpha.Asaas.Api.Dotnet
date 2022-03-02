@@ -1,53 +1,55 @@
+using Asaas.Api.Dotnet.Attributes;
+
 namespace Asaas.Api.Dotnet.Models.Requests.Clients
 {
-    public class CreateClientRequest : RequestParams
+    public record CreateClientRequest : RequestParams
     {
-        [BodyParam("name")]
+        [BodyParameter("name")]
         public string Name { get; set; }
 
-        [BodyParam("email")]
+        [BodyParameter("email")]
         public string Email { get; set; }
 
-        [BodyParam("phone")]
+        [BodyParameter("phone")]
         public string Phone { get; set; }
 
-        [BodyParam("mobilePhone")]
+        [BodyParameter("mobilePhone")]
         public string MobilePhone { get; set; }
 
-        [BodyParam("cpfCnpj")]
+        [BodyParameter("cpfCnpj")]
         public string CpfCnpj { get; set; }
 
-        [BodyParam("postalCode")]
+        [BodyParameter("postalCode")]
         public string PostalCode { get; set; }
 
-        [BodyParam("address")]
+        [BodyParameter("address")]
         public string Address { get; set; }
 
-        [BodyParam("addressNumber")]
+        [BodyParameter("addressNumber")]
         public string AddressNumber { get; set; }
 
-        [BodyParam("complement")]
+        [BodyParameter("complement")]
         public string Complement { get; set; }
 
-        [BodyParam("province")]
+        [BodyParameter("province")]
         public string Province { get; set; }
 
-        [BodyParam("externalReference")]
+        [BodyParameter("externalReference")]
         public string ExternalReference { get; set; }
 
-        [BodyParam("notificationDisabled")]
+        [BodyParameter("notificationDisabled")]
         public bool NotificationDisabled { get; set; }
 
-        [BodyParam("additionalEmails")]
+        [BodyParameter("additionalEmails")]
         public string AdditionalEmails { get; set; }
 
-        [BodyParam("municipalInscription")]
+        [BodyParameter("municipalInscription")]
         public string MunicipalInscription { get; set; }
 
-        [BodyParam("stateInscription")]
+        [BodyParameter("stateInscription")]
         public string StateInscription { get; set; }
 
-        [BodyParam("observations")]
+        [BodyParameter("observations")]
         public string Observations { get; set; }
     }
 }

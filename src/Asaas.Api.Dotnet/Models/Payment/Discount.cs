@@ -1,15 +1,16 @@
+using Asaas.Api.Dotnet.Attributes;
 using Asaas.Api.Dotnet.Models.Requests;
 using Newtonsoft.Json;
 
 namespace Asaas.Api.Dotnet.Models.Payment
 {
-    public class Discount : RequestParams
+    public record Discount : RequestParams
     {
-        [BodyParam("value")]
+        [BodyParameter("value")]
         [JsonProperty("value")]
         public decimal Value { get; set; }
 
-        [BodyParam("dueDateLimitDays")]
+        [BodyParameter("dueDateLimitDays")]
         [JsonProperty("dueDateLimitDays")]
         public int DueDateLimitDays { get; set; }
     }

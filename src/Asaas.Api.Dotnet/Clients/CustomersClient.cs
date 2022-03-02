@@ -13,12 +13,14 @@ namespace Asaas.Api.Dotnet.Clients
 
         public async Task<Response<CreateClientResponse>> CreateClientAsync(CreateClientRequest request)
         {
-            return await Api.PostAsync<CreateClientResponse>(AsaasUrls.Customers(), null, request.BuildBodyParams());
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
+            return await Api.PostAsync<CreateClientResponse>(AsaasUrls.Customers(), null, request.BuildBodyParameters());
         }
 
         public async Task<Response<SearchClientsResponse>> SearchClientAsync(SearchClientsRequest request)
         {
-            return await Api.GetAsync<SearchClientsResponse>(AsaasUrls.Customers(), request.BuildQueryParams());
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
+            return await Api.GetAsync<SearchClientsResponse>(AsaasUrls.Customers(), request.BuildQueryParameters());
         }
     }
 }

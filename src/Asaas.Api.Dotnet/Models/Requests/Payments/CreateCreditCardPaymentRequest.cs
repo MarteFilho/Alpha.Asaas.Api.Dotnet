@@ -1,34 +1,35 @@
+using Asaas.Api.Dotnet.Attributes;
 using Asaas.Api.Dotnet.Models.Payment;
 
 namespace Asaas.Api.Dotnet.Models.Requests.Payments
 {
-    public class CreateCreditCardPaymentRequest : RequestParams
+    public record CreateCreditCardPaymentRequest : RequestParams
     {
-        [BodyParam("customer")]
+        [BodyParameter("customer")]
         public string Customer { get; set; }
 
-        [BodyParam("billingType")]
+        [BodyParameter("billingType")]
         public string BillingType { get; set; }
 
-        [BodyParam("dueDate")]
+        [BodyParameter("dueDate")]
         public string DueDate { get; set; }
 
-        [BodyParam("value")]
+        [BodyParameter("value")]
         public double Value { get; set; }
 
-        [BodyParam("description")]
+        [BodyParameter("description")]
         public string Description { get; set; }
 
-        [BodyParam("externalReference")]
+        [BodyParameter("externalReference")]
         public string ExternalReference { get; set; }
 
-        [BodyParam("creditCard")]
+        [BodyParameter("creditCard")]
         public CreditCard CreditCard { get; set; }
 
-        [BodyParam("creditCardHolderInfo")]
+        [BodyParameter("creditCardHolderInfo")]
         public CreditCardHolderInfo CreditCardHolderInfo { get; set; }
 
-        [BodyParam("creditCardToken")]
+        [BodyParameter("creditCardToken")]
         public string? CreditCardToken { get; set; }
     }
 }

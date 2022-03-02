@@ -1,27 +1,28 @@
+using Asaas.Api.Dotnet.Attributes;
 using Asaas.Api.Dotnet.Models.Requests;
 using Newtonsoft.Json;
 
 namespace Asaas.Api.Dotnet.Models.Payment
 {
-    public class CreditCard : RequestParams
+    public record CreditCard : RequestParams
     {
-        [BodyParam("holderName")]
+        [BodyParameter("holderName")]
         [JsonProperty("holderName")]
         public string HolderName { get; set; }
 
-        [BodyParam("number")]
+        [BodyParameter("number")]
         [JsonProperty("number")]
         public string Number { get; set; }
 
-        [BodyParam("expiryMonth")]
+        [BodyParameter("expiryMonth")]
         [JsonProperty("expiryMonth")]
         public string ExpiryMonth { get; set; }
 
-        [BodyParam("expiryYear")]
+        [BodyParameter("expiryYear")]
         [JsonProperty("expiryYear")]
         public string ExpiryYear { get; set; }
 
-        [BodyParam("ccv")]
+        [BodyParameter("ccv")]
         [JsonProperty("ccv")]
         public string Ccv { get; set; }
     }

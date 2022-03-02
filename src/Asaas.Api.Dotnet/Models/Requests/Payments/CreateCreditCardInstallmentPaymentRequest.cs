@@ -1,59 +1,60 @@
+using Asaas.Api.Dotnet.Attributes;
 using Asaas.Api.Dotnet.Models.Payment;
 using Newtonsoft.Json;
 
 namespace Asaas.Api.Dotnet.Models.Requests.Payments
 {
-    public class CreateCreditCardInstallmentPaymentRequest : RequestParams
+    public record CreateCreditCardInstallmentPaymentRequest : RequestParams
     {
-        [BodyParam("customer")]
+        [BodyParameter("customer")]
         [JsonProperty("customer")]
         public string Customer { get; set; } = null!;
 
-        [BodyParam("billingType")]
+        [BodyParameter("billingType")]
         [JsonProperty("billingType")]
         public string BillingType { get; set; } = null!;
 
-        [BodyParam("installmentCount")]
+        [BodyParameter("installmentCount")]
         [JsonProperty("installmentCount")]
         public int InstallmentCount { get; set; }
 
-        [BodyParam("installmentValue")]
+        [BodyParameter("installmentValue")]
         [JsonProperty("installmentValue")]
         public int? InstallmentValue { get; set; }
 
-        [BodyParam("totalValue")]
+        [BodyParameter("totalValue")]
         [JsonProperty("totalValue")]
-        public int TotalValue { get; set; }
+        public double TotalValue { get; set; }
 
-        [BodyParam("dueDate")]
+        [BodyParameter("dueDate")]
         [JsonProperty("dueDate")]
         public string DueDate { get; set; } = null!;
 
-        [BodyParam("description")]
+        [BodyParameter("description")]
         [JsonProperty("description")]
         public string? Description { get; set; }
 
-        [BodyParam("externalReference")]
+        [BodyParameter("externalReference")]
         [JsonProperty("externalReference")]
         public string? ExternalReference { get; set; }
 
-        [BodyParam("creditCard")]
+        [BodyParameter("creditCard")]
         [JsonProperty("creditCard")]
         public CreditCard CreditCard { get; set; }
 
-        [BodyParam("creditCardHolderInfo")]
+        [BodyParameter("creditCardHolderInfo")]
         [JsonProperty("creditCardHolderInfo")]
         public CreditCardHolderInfo CreditCardHolderInfo { get; set; }
 
-        [BodyParam("discount")]
+        [BodyParameter("discount")]
         [JsonProperty("discount")]
         public Discount? Discount { get; set; }
 
-        [BodyParam("fine")]
+        [BodyParameter("fine")]
         [JsonProperty("fine")]
         public Fine? Fine { get; set; }
 
-        [BodyParam("interest")]
+        [BodyParameter("interest")]
         [JsonProperty("interest")]
         public Interest? Interest { get; set; }
     }

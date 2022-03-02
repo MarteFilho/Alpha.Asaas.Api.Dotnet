@@ -19,7 +19,7 @@ namespace Asaas.Api.Dotnet.Http
             _httpClient = httpClient;
         }
 
-        public async Task<IResponse> DoRequest(IRequest request)
+        public async Task<IResponse> SendRequest(IRequest request)
         {
             using HttpRequestMessage requestMessage = BuildRequestMessage(request);
             var responseMessage = await _httpClient

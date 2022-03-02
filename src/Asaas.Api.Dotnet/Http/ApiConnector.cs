@@ -21,99 +21,104 @@ public class ApiConnector : IApiConnector
       IJsonSerializer jsonSerializer,
       IHttpClient httpClient)
     {
+        ArgumentNullException.ThrowIfNull(baseAddress, nameof(baseAddress));
+        ArgumentNullException.ThrowIfNull(accessToken, nameof(accessToken));
+        ArgumentNullException.ThrowIfNull(jsonSerializer, nameof(jsonSerializer));
+        ArgumentNullException.ThrowIfNull(httpClient, nameof(httpClient));
+
         _baseAddress = baseAddress;
         _accessToken = accessToken;
         _jsonSerializer = jsonSerializer;
         _httpClient = httpClient;
     }
 
-    public Task<Response<T>> Delete<T>(Uri uri) where T : DefaultResponse
+    public Task<Response<T>> DeleteAsync<T>(Uri uri) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Delete);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Delete);
     }
 
-    public Task<Response<T>> Delete<T>(Uri uri, IDictionary<string, string>? parameters) where T : DefaultResponse
+    public Task<Response<T>> DeleteAsync<T>(Uri uri, IDictionary<string, string>? parameters) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Delete, parameters);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Delete, parameters);
     }
 
-    public Task<Response<T>> Delete<T>(Uri uri, IDictionary<string, string>? parameters, object? body) where T : DefaultResponse
+    public Task<Response<T>> DeleteAsync<T>(Uri uri, IDictionary<string, string>? parameters, object? body) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Delete, parameters, body);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Delete, parameters, body);
     }
 
-    public async Task<HttpStatusCode> Delete(Uri uri, IDictionary<string, string>? parameters, object? body)
+    public async Task<HttpStatusCode> DeleteAsync(Uri uri, IDictionary<string, string>? parameters, object? body)
     {
-        var response = await SendApiRequestDetailed(uri, HttpMethod.Delete, parameters, body).ConfigureAwait(false);
+        var response = await SendApiRequestDetailedAsync(uri, HttpMethod.Delete, parameters, body).ConfigureAwait(false);
         return response.StatusCode;
     }
 
     public Task<Response<T>> GetAsync<T>(Uri uri) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Get);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Get);
     }
 
     public Task<Response<T>> GetAsync<T>(Uri uri, IDictionary<string, string>? parameters) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Get, parameters);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Get, parameters);
     }
 
     public async Task<HttpStatusCode> GetAsync(Uri uri, IDictionary<string, string>? parameters, object? body)
     {
-        var response = await SendApiRequestDetailed(uri, HttpMethod.Get, parameters, body).ConfigureAwait(false);
+        var response = await SendApiRequestDetailedAsync(uri, HttpMethod.Get, parameters, body).ConfigureAwait(false);
         return response.StatusCode;
     }
 
     public Task<Response<T>> PostAsync<T>(Uri uri) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Post);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Post);
     }
 
     public Task<Response<T>> PostAsync<T>(Uri uri, IDictionary<string, string>? parameters) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Post, parameters);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Post, parameters);
     }
 
     public Task<Response<T>> PostAsync<T>(Uri uri, IDictionary<string, string>? parameters, object? body) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Post, parameters, body);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Post, parameters, body);
     }
 
     public Task<Response<T>> PostAsync<T>(Uri uri, IDictionary<string, string>? parameters, object? body, Dictionary<string, string>? headers) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Post, parameters, body, headers);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Post, parameters, body, headers);
     }
 
     public async Task<HttpStatusCode> PostAsync(Uri uri, IDictionary<string, string>? parameters, object? body)
     {
-        var response = await SendApiRequestDetailed(uri, HttpMethod.Post, parameters, body).ConfigureAwait(false);
+        var response = await SendApiRequestDetailedAsync(uri, HttpMethod.Post, parameters, body).ConfigureAwait(false);
         return response.StatusCode;
     }
 
-    public Task<Response<T>> Put<T>(Uri uri) where T : DefaultResponse
+    public Task<Response<T>> PutAsync<T>(Uri uri) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Put);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Put);
     }
 
-    public Task<Response<T>> Put<T>(Uri uri, IDictionary<string, string>? parameters) where T : DefaultResponse
+    public Task<Response<T>> PutAsync<T>(Uri uri, IDictionary<string, string>? parameters) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Put, parameters);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Put, parameters);
     }
 
-    public Task<Response<T>> Put<T>(Uri uri, IDictionary<string, string>? parameters, object? body) where T : DefaultResponse
+    public Task<Response<T>> PutAsync<T>(Uri uri, IDictionary<string, string>? parameters, object? body) where T : DefaultResponse
     {
-        return SendApiRequest<T>(uri, HttpMethod.Put, parameters, body);
+        return SendApiRequestAsync<T>(uri, HttpMethod.Put, parameters, body);
     }
 
-    public async Task<HttpStatusCode> Put(Uri uri, IDictionary<string, string>? parameters, object? body)
+    public async Task<HttpStatusCode> PutAsync(Uri uri, IDictionary<string, string>? parameters, object? body)
     {
-        var response = await SendApiRequestDetailed(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
+        var response = await SendApiRequestDetailedAsync(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
         return response.StatusCode;
     }
 
-    public async Task<HttpStatusCode> PutRaw(Uri uri, IDictionary<string, string>? parameters, object? body)
+    public async Task<HttpStatusCode> PutRawAsync(Uri uri, IDictionary<string, string>? parameters, object? body)
     {
-        var response = await SendRawRequest(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
+        var response = await SendRawRequestAsync(uri, HttpMethod.Put, parameters, body).ConfigureAwait(false);
         return response.StatusCode;
     }
 
@@ -153,21 +158,21 @@ public class ApiConnector : IApiConnector
         };
     }
 
-    private async Task<IApiResponse<T>> DoSerializedRequest<T>(IRequest request)
+    private async Task<IApiResponse<T>> SendSerializedRequestAsync<T>(IRequest request)
     {
         _jsonSerializer.SerializeRequest(request);
-        var response = await DoRequest(request).ConfigureAwait(false);
+        var response = await SendRequestAsync(request).ConfigureAwait(false);
         return _jsonSerializer.DeserializeResponse<T>(response);
     }
 
-    private async Task<IResponse> DoRequest(IRequest request)
+    private async Task<IResponse> SendRequestAsync(IRequest request)
     {
-        IResponse response = await _httpClient.DoRequest(request).ConfigureAwait(false);
+        IResponse response = await _httpClient.SendRequest(request).ConfigureAwait(false);
         ResponseReceived?.Invoke(this, response);
         return response;
     }
 
-    public Task<IResponse> SendRawRequest(
+    public Task<IResponse> SendRawRequestAsync(
         Uri uri,
         HttpMethod method,
         IDictionary<string, string>? parameters = null,
@@ -176,10 +181,10 @@ public class ApiConnector : IApiConnector
       )
     {
         var request = CreateRequest(uri, method, parameters, body, headers);
-        return DoRequest(request);
+        return SendRequestAsync(request);
     }
 
-    public async Task<Response<T>> SendApiRequest<T>(
+    public async Task<Response<T>> SendApiRequestAsync<T>(
         Uri uri,
         HttpMethod method,
         IDictionary<string, string>? parameters = null,
@@ -188,13 +193,13 @@ public class ApiConnector : IApiConnector
       ) where T : DefaultResponse
     {
         var request = CreateRequest(uri, method, parameters, body, headers);
-        IApiResponse<T> apiResponse = await DoSerializedRequest<T>(request).ConfigureAwait(false);
+        IApiResponse<T> apiResponse = await SendSerializedRequestAsync<T>(request).ConfigureAwait(false);
         if (!apiResponse.Response.Success)
             return new Response<T>(apiResponse.Body?.Errors);
         return new Response<T>(apiResponse.Body)!;
     }
 
-    public async Task<IResponse> SendApiRequestDetailed(
+    public async Task<IResponse> SendApiRequestDetailedAsync(
         Uri uri,
         HttpMethod method,
         IDictionary<string, string>? parameters = null,
@@ -203,7 +208,7 @@ public class ApiConnector : IApiConnector
       )
     {
         var request = CreateRequest(uri, method, parameters, body, headers);
-        var response = await DoSerializedRequest<object>(request).ConfigureAwait(false);
+        var response = await SendSerializedRequestAsync<object>(request).ConfigureAwait(false);
         return response.Response;
     }
 }

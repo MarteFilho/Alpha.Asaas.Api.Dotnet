@@ -18,6 +18,7 @@ public static class AsaasUrls
 
     public static Uri Customers() => BaseAddress($"customers");
     public static Uri Payments() => BaseAddress($"payments");
+    public static Uri Invoices() => BaseAddress($"invoices");
 
     public static Uri Categories() => BaseAddress($"browse/categories");
 

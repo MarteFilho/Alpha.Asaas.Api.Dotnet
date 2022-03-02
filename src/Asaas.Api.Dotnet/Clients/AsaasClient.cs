@@ -8,11 +8,15 @@ namespace Asaas.Api.Dotnet.Clients
         private readonly IApiConnector _apiConnector;
         public AsaasClient(string accessToken, bool sandbox)
         {
+            ArgumentNullException.ThrowIfNull(accessToken, nameof(accessToken));
+            ArgumentNullException.ThrowIfNull(sandbox, nameof(sandbox));
             _apiConnector = new ApiConnector(sandbox ? AsaasUrls.ApiV3Sandbox : AsaasUrls.ApiV3Production, accessToken);
             Customers = new CustomersClient(_apiConnector);
             Payments = new PaymentsClient(_apiConnector);
+            Invoices = new InvoicesClient(_apiConnector);
         }
-        public CustomersClient Customers { get;}
+        public CustomersClient Customers { get; }
         public PaymentsClient Payments { get; }
+        public InvoicesClient Invoices { get; }
     }
 }

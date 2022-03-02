@@ -11,12 +11,14 @@ namespace Asaas.Api.Dotnet.Clients
 
         public async Task<Response<CreateCreditCardPaymentResponse>> CreateCreditCardPaymentAsync(CreateCreditCardPaymentRequest request)
         {
-            return await Api.PostAsync<CreateCreditCardPaymentResponse>(AsaasUrls.Payments(), null, request.BuildBodyParams());
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
+            return await Api.PostAsync<CreateCreditCardPaymentResponse>(AsaasUrls.Payments(), null, request.BuildBodyParameters());
         }
 
         public async Task<Response<CreateCreditCardInstallmentPaymentResponse>> CreateCreditCardInstallmentPaymentAsync(CreateCreditCardInstallmentPaymentRequest request)
         {
-            return await Api.PostAsync<CreateCreditCardInstallmentPaymentResponse>(AsaasUrls.Payments(), null, request.BuildBodyParams());
+            ArgumentNullException.ThrowIfNull(request, nameof(request));
+            return await Api.PostAsync<CreateCreditCardInstallmentPaymentResponse>(AsaasUrls.Payments(), null, request.BuildBodyParameters());
         }
     }
 }

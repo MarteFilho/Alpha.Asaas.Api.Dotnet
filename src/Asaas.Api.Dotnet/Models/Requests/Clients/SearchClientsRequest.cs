@@ -1,20 +1,22 @@
+using Asaas.Api.Dotnet.Attributes;
+
 namespace Asaas.Api.Dotnet.Models.Requests.Clients
 {
-    public class SearchClientsRequest : RequestParams
+    public record SearchClientsRequest : RequestParams
     {
-        [QueryParam("name")]
+        [QueryParameter("name")]
         public string? Name { get; set; }
-        [QueryParam("email")]
+        [QueryParameter("email")]
         public string? Email { get; set; }
-        [QueryParam("cpfCnpj")]
+        [QueryParameter("cpfCnpj")]
         public string? CpfCnpj { get; set; }
-        [QueryParam("groupName")]
+        [QueryParameter("groupName")]
         public string? GroupName { get; set; }
-        [QueryParam("externalReference")]
+        [QueryParameter("externalReference")]
         public string? ExternalReference { get; set; }
-        [QueryParam("offset")]
+        [QueryParameter("offset")]
         public int? Offset { get; set; }
-        [QueryParam("limit")]
+        [QueryParameter("limit")]
         public int? Limit { get; set; }
     }
 }
