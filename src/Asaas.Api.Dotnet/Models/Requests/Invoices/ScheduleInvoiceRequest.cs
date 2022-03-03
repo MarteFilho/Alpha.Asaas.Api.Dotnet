@@ -54,16 +54,16 @@ namespace Asaas.Api.Dotnet.Models.Invoices
         public bool RetainIss { get; set; }
         [BodyParameter("iss")]
         [JsonProperty("iss")]
-        public int Iss { get; set; }
+        public double Iss { get; set; }
         [BodyParameter("cofins")]
         [JsonProperty("cofins")]
-        public int Cofins { get; set; }
+        public double Cofins { get; set; }
         [BodyParameter("csll")]
         [JsonProperty("csll")]
-        public int Csll { get; set; }
+        public double Csll { get; set; }
         [BodyParameter("inss")]
         [JsonProperty("inss")]
-        public int Inss { get; set; }
+        public double Inss { get; set; }
         [BodyParameter("ir")]
         [JsonProperty("ir")]
         public double Ir { get; set; }

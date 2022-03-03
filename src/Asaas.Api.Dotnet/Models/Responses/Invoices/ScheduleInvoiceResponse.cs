@@ -47,7 +47,7 @@ namespace Asaas.Api.Dotnet.Models.Invoices
         public string ValidationCode { get; set; }
         [BodyParameter("value")]
         [JsonProperty("value")]
-        public int Value { get; set; }
+        public string Value { get; set; }
         [BodyParameter("deductions")]
         [JsonProperty("deductions")]
         public int Deductions { get; set; }
