@@ -18,6 +18,11 @@ public static class AsaasUrls
 
     public static Uri Customers() => BaseAddress($"customers");
     public static Uri Payments() => BaseAddress($"payments");
+    public static Uri Subscriptions() => BaseAddress($"subscriptions");
+    public static Uri Subscriptions(string id) => BaseAddress($"subscriptions/{id}");
+    public static Uri TokenizeCreditCard() => BaseAddress($"creditcard/tokenize");
+    public static Uri PixQrCode(string id) => BaseAddress($"payments/{id}/pixQrCode");
+    public static Uri BilletIdentificationField(string id) => BaseAddress($"payments/{id}/identificationField");
     public static Uri Invoices() => BaseAddress($"invoices");
 
     public static Uri Categories() => BaseAddress($"browse/categories");

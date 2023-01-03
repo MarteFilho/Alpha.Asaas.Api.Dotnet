@@ -14,9 +14,13 @@ namespace Asaas.Api.Dotnet.Clients
             Customers = new CustomersClient(_apiConnector);
             Payments = new PaymentsClient(_apiConnector);
             Invoices = new InvoicesClient(_apiConnector);
+            Subscriptions = new SubscriptionsClient(_apiConnector);
+            CreditCards = new CreditCardClient(_apiConnector);
         }
         public CustomersClient Customers { get; }
         public PaymentsClient Payments { get; }
         public InvoicesClient Invoices { get; }
+        public SubscriptionsClient Subscriptions { get; }
+        public CreditCardClient CreditCards { get; set; }
     }
 }
